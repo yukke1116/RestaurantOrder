@@ -1,47 +1,60 @@
 {
-    "name": "dompdf/dompdf",
+    "name": "fakerphp/faker",
     "type": "library",
-    "description": "DOMPDF is a CSS 2.1 compliant HTML to PDF converter",
-    "homepage": "https://github.com/dompdf/dompdf",
-    "license": "LGPL-2.1",
+    "description": "Faker is a PHP library that generates fake data for you.",
+    "keywords": [
+        "faker",
+        "fixtures",
+        "data"
+    ],
+    "license": "MIT",
     "authors": [
         {
-            "name": "The Dompdf Community",
-            "homepage": "https://github.com/dompdf/dompdf/blob/master/AUTHORS.md"
+            "name": "François Zaninotto"
         }
     ],
+    "require": {
+        "php": "^7.1 || ^8.0",
+        "psr/container": "^1.0 || ^2.0",
+        "symfony/deprecation-contracts": "^2.2 || ^3.0"
+    },
+    "require-dev": {
+        "ext-intl": "*",
+        "bamarni/composer-bin-plugin": "^1.4.1",
+        "doctrine/persistence": "^1.3 || ^2.0",
+        "symfony/phpunit-bridge": "^4.4 || ^5.2"
+    },
     "autoload": {
         "psr-4": {
-            "Dompdf\\": "src/"
-        },
-        "classmap": [
-            "lib/"
-        ]
+            "Faker\\": "src/Faker/"
+        }
     },
     "autoload-dev": {
         "psr-4": {
-            "Dompdf\\Tests\\": "tests/"
+            "Faker\\Test\\": "test/Faker/",
+            "Faker\\Test\\Fixture\\": "test/Fixture/"
         }
     },
-    "require": {
-        "php": "^7.1 || ^8.0",
-        "ext-dom": "*",
-        "ext-mbstring": "*",
-        "masterminds/html5": "^2.0",
-        "phenx/php-font-lib": ">=0.5.4 <1.0.0",
-        "phenx/php-svg-lib": ">=0.3.3 <1.0.0"
-    },
-    "require-dev": {
-        "ext-json": "*",
-        "ext-zip": "*",
-        "phpunit/phpunit": "^7.5 || ^8 || ^9",
-        "squizlabs/php_codesniffer": "^3.5",
-        "mockery/mockery": "^1.3"
+    "conflict": {
+        "fzaninotto/faker": "*"
     },
     "suggest": {
-        "ext-gd": "Needed to process images",
-        "ext-imagick": "Improves image processing performance",
-        "ext-gmagick": "Improves image processing performance",
-        "ext-zlib": "Needed for pdf stream compression"
+        "ext-curl": "Required by Faker\\Provider\\Image to download images.",
+        "ext-dom": "Required by Faker\\Provider\\HtmlLorem for generating random HTML.",
+        "ext-iconv": "Required by Faker\\Provider\\ru_RU\\Text::realText() for generating real Russian text.",
+        "ext-mbstring": "Required for multibyte Unicode string functionality.",
+        "doctrine/orm": "Required to use Faker\\ORM\\Doctrine"
+    },
+    "config": {
+        "allow-plugins": {
+            "bamarni/composer-bin-plugin": true,
+            "composer/package-versions-deprecated": true
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "v1.20-dev"
+        }
     }
 }
